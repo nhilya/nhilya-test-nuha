@@ -37,7 +37,12 @@ const showingNavigationDropdown = ref(false);
                                     :href="route('dashboard')"
                                     :active="route().current('dashboard')"
                                 >
-                                    Dashboard
+                                    Lists
+                                </NavLink>
+                                <NavLink
+                                    :href="route('dashboard')"    
+                                >
+                                    Kanban Board
                                 </NavLink>
                             </div>
                         </div>
