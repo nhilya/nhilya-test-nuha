@@ -14,7 +14,7 @@
                     </div>
 
                     <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden items-center space-x-8 sm:ms-10 sm:flex">
                         <button
                             @click="$emit('changeView', 'list')"
                             :class="[
@@ -165,7 +165,7 @@ const props = defineProps<{
     viewMode?: 'list' | 'kanban';
 }>();
 
-const emit = defineEmits<{
+defineEmits<{
     changeView: [mode: 'list' | 'kanban'];
 }>();
 

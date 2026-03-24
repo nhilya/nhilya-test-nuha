@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 /**
  * List management routes - protected by auth middleware
  */
-Route::middleware(['auth', 'web'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('lists', [ListController::class, 'index'])->name('lists.index');
     Route::post('lists', [ListController::class, 'store'])->name('lists.store');
     Route::put('lists/{list}', [ListController::class, 'update'])->name('lists.update');
@@ -40,7 +40,7 @@ Route::middleware(['auth', 'web'])->group(function () {
 /**
  * Task management routes - protected by auth middleware
  */
-Route::middleware(['auth', 'web'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('tasks', [TaskController::class, 'index'])->name('tasks.index');
     Route::post('tasks', [TaskController::class, 'store'])->name('tasks.store');
     Route::put('tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
@@ -50,7 +50,7 @@ Route::middleware(['auth', 'web'])->group(function () {
 /**
  * Kanban task management routes - protected by auth middleware
  */
-Route::middleware(['auth', 'web'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('kanban/tasks', [TaskController::class, 'index'])->name('tasks.index');
     Route::post('kanban/tasks', [TaskController::class, 'store'])->name('tasks.store');
     Route::put('kanban/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');

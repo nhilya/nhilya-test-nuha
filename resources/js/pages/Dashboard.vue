@@ -243,47 +243,6 @@ const deleteTodo = async (id: number) => {
     }
 };
 
-const updateTaskStatus = async (id: number, newStatus: string) => {
-    const todo = todos.value.find(t => t.id === id);
-    if (!todo) return;
-
-    try {
-        const response = await fetch(`/tasks/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
-                'X-Requested-With': 'XMLHttpRequest',
-                'Accept': 'application/json',
-            },
-            credentials: 'same-origin',
-            body: JSON.stringify({
-                title: todo.title,
-                is_completed: newStatus === 'completed',
-                status: newStatus,
-            }),
-        });
-
-        if (response.status === 401) {
-            window.location.href = '/login';
-            return;
-        }
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        if (data.success) {
-            todo.status = newStatus;
-            todo.is_completed = newStatus === 'completed';
-        } else {
-            console.error('Failed to update task status:', data);
-        }
-    } catch (error) {
-        console.error('Failed to update task status:', error);
-    }
-};
 
 const clearCompleted = async () => {
     const completedTasks = todos.value.filter(todo => todo.is_completed);
