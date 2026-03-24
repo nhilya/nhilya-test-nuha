@@ -3,7 +3,6 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import KanbanBoard from '@/pages/KanbanBoard.vue';
 import { Head, useForm, usePage } from '@inertiajs/vue3';
 import { ref, watch, computed, onMounted, onErrorCaptured } from 'vue';
-import { router } from '@inertiajs/vue3';
 
 interface Task {
     id: number;
