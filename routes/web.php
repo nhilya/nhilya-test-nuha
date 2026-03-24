@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ListController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,16 @@ Route::middleware('auth')->group(function () {
 });
 
 /**
+ * List management routes - protected by auth middleware
+ */
+Route::middleware(['auth', 'web'])->group(function () {
+    Route::get('lists', [ListController::class, 'index'])->name('lists.index');
+    Route::post('lists', [ListController::class, 'store'])->name('lists.store');
+    Route::put('lists/{list}', [ListController::class, 'update'])->name('lists.update');
+    Route::delete('lists/{list}', [ListController::class, 'destroy'])->name('lists.destroy');
+});
+
+/**
  * Task management routes - protected by auth middleware
  */
 Route::middleware(['auth', 'web'])->group(function () {
@@ -27,6 +38,16 @@ Route::middleware(['auth', 'web'])->group(function () {
     Route::post('tasks', [TaskController::class, 'store'])->name('tasks.store');
     Route::put('tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
     Route::delete('tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+});
+
+/**
+ * Kanban task management routes - protected by auth middleware
+ */
+Route::middleware(['auth', 'web'])->group(function () {
+    Route::get('kanban/tasks', [TaskController::class, 'index'])->name('tasks.index');
+    Route::post('kanban/tasks', [TaskController::class, 'store'])->name('tasks.store');
+    Route::put('kanban/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
+    Route::delete('kanban/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 });
 
 require __DIR__.'/auth.php';

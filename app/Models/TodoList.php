@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Task extends Model
+class TodoList extends Model
 {
-    use SoftDeletes;
+    protected $table = 'lists';
 
     protected $guarded = [
         'id',
@@ -22,8 +22,8 @@ class Task extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function list(): BelongsTo
+    public function tasks(): HasMany
     {
-        return $this->belongsTo(TodoList::class, 'list_id');
+        return $this->hasMany(Task::class, 'list_id');
     }
 }

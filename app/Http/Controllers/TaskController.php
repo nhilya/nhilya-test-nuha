@@ -34,6 +34,11 @@ class TaskController extends Controller
         $task = auth()->user()->tasks()->findOrFail($id);
         $task->update($taskRequest->validated());
 
+        if ($taskRequest->has('is_completed')) {
+            $task->status = $taskRequest->input('is_completed') ? 'completed' : 'pending';
+            $task->save();
+        }
+
         return response()->json([
             'success' => true,
             'task' => $task,

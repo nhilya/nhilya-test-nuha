@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->boolean('is_completed')->default(false);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->enum('status', ['not start yet', 'pending', 'completed'])->default('not start yet');
             $table->timestamps();
             $table->softDeletes();
         });

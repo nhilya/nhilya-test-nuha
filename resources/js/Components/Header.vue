@@ -15,12 +15,28 @@
 
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Lists
-                        </NavLink>
-                        <NavLink :href="route('dashboard')">
+                        <button
+                            @click="$emit('changeView', 'list')"
+                            :class="[
+                                'px-3 py-2 text-sm font-medium rounded-md transition-colors',
+                                props.viewMode === 'list'
+                                    ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300'
+                                    : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
+                            ]"
+                        >
+                            Todos
+                        </button>
+                        <button
+                            @click="$emit('changeView', 'kanban')"
+                            :class="[
+                                'px-3 py-2 text-sm font-medium rounded-md transition-colors',
+                                props.viewMode === 'kanban'
+                                    ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300'
+                                    : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
+                            ]"
+                        >
                             Kanban Board
-                        </NavLink>
+                        </button>
                     </div>
                 </div>
 
@@ -104,10 +120,10 @@
             class="sm:hidden"
         >
             <div class="space-y-1 pb-3 pt-2">
-                <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                <ResponsiveNavLink href="#" :active="props.viewMode === 'list'" @click.prevent="$emit('changeView', 'list')">
                     Lists
                 </ResponsiveNavLink>
-                <ResponsiveNavLink :href="route('dashboard')">
+                <ResponsiveNavLink href="#" :active="props.viewMode === 'kanban'" @click.prevent="$emit('changeView', 'kanban')">
                     Kanban Board
                 </ResponsiveNavLink>
             </div>
@@ -144,6 +160,14 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
+
+const props = defineProps<{
+    viewMode?: 'list' | 'kanban';
+}>();
+
+const emit = defineEmits<{
+    changeView: [mode: 'list' | 'kanban'];
+}>();
 
 const showingNavigationDropdown = ref(false);
 </script>

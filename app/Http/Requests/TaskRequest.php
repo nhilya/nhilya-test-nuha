@@ -25,6 +25,8 @@ class TaskRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'is_completed' => ['boolean'],
+            'status' => ['sometimes', 'string', 'in:not start yet,pending,completed'],
+            'list_id' => ['nullable', 'integer', 'exists:lists,id'],
         ];
     }
 }
