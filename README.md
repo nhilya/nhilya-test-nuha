@@ -3,6 +3,137 @@
 
 <p align="center"><img src="public/favicon.svg" style="width: 200px;" alt="Archivix Docuvault Logo"></p>
 
+## 🗂️ Project Structure
+
+```
+├── 📁 app/
+│   ├── 📁 Http/
+│   │   ├── 📁 Controllers/
+│   │   │   ├── 📁 Auth/
+│   │   │   │   ├── 🐘 AuthenticatedSessionController.php
+│   │   │   │   ├── 🐘 ConfirmablePasswordController.php
+│   │   │   │   ├── 🐘 EmailVerificationNotificationController.php
+│   │   │   │   ├── 🐘 EmailVerificationPromptController.php
+│   │   │   │   ├── 🐘 NewPasswordController.php
+│   │   │   │   ├── 🐘 PasswordController.php
+│   │   │   │   ├── 🐘 PasswordResetLinkController.php
+│   │   │   │   ├── 🐘 RegisteredUserController.php
+│   │   │   │   └── 🐘 VerifyEmailController.php
+│   │   │   ├── 🐘 Controller.php
+│   │   │   ├── 🐘 ListController.php
+│   │   │   ├── 🐘 ProfileController.php
+│   │   │   └── 🐘 TaskController.php
+│   │   ├── 📁 Middleware/
+│   │   │   └── 🐘 HandleInertiaRequests.php
+│   │   └── 📁 Requests/
+│   │       ├── 📁 Auth/
+│   │       │   └── 🐘 LoginRequest.php
+│   │       ├── 🐘 ProfileUpdateRequest.php
+│   │       └── 🐘 TaskRequest.php
+│   ├── 📁 Models/
+│   │   ├── 🐘 Task.php
+│   │   ├── 🐘 TodoList.php
+│   │   └── 🐘 User.php
+│   └── 📁 Providers/
+│       └── 🐘 AppServiceProvider.php
+├── 📁 bootstrap/
+│   ├── 🐘 app.php
+│   └── 🐘 providers.php
+├── 📁 config/
+│   ├── 🐘 app.php
+│   ├── 🐘 auth.php
+│   ├── 🐘 cache.php
+│   ├── 🐘 database.php
+│   ├── 🐘 filesystems.php
+│   ├── 🐘 inertia.php
+│   ├── 🐘 logging.php
+│   ├── 🐘 mail.php
+│   ├── 🐘 queue.php
+│   ├── 🐘 services.php
+│   └── 🐘 session.php
+├── 📁 database/
+│   ├── 📁 factories/
+│   │   └── 🐘 UserFactory.php
+│   ├── 📁 migrations/
+│   │   ├── 🐘 0001_01_01_000000_create_users_table.php
+│   │   ├── 🐘 0001_01_01_000001_create_cache_table.php
+│   │   ├── 🐘 0001_01_01_000002_create_jobs_table.php
+│   │   ├── 🐘 2026_03_23_084109_create_task_table.php
+│   │   └── 🐘 2026_03_24_153324_create_list_related_table.php
+├── 📁 resources/
+│   ├── 📁 css/
+│   │   └── 🎨 app.css
+│   ├── 📁 js/
+│   │   ├── 📁 Components/
+│   │   │   ├── 📄 ApplicationLogo.vue
+│   │   │   ├── 📄 Checkbox.vue
+│   │   │   ├── 📄 DangerButton.vue
+│   │   │   ├── 📄 Dropdown.vue
+│   │   │   ├── 📄 DropdownLink.vue
+│   │   │   ├── 📄 Footer.vue
+│   │   │   ├── 📄 Header.vue
+│   │   │   ├── 📄 InputError.vue
+│   │   │   ├── 📄 InputLabel.vue
+│   │   │   ├── 📄 Modal.vue
+│   │   │   ├── 📄 NavLink.vue
+│   │   │   ├── 📄 PrimaryButton.vue
+│   │   │   ├── 📄 ResponsiveNavLink.vue
+│   │   │   ├── 📄 SecondaryButton.vue
+│   │   │   └── 📄 TextInput.vue
+│   │   ├── 📁 Layouts/
+│   │   │   ├── 📄 AuthenticatedLayout.vue
+│   │   │   └── 📄 GuestLayout.vue
+│   │   ├── 📁 lib/
+│   │   │   └── 📄 utils.ts
+│   │   ├── 📁 pages/
+│   │   │   ├── 📁 Auth/
+│   │   │   │   ├── 📄 ConfirmPassword.vue
+│   │   │   │   ├── 📄 ForgotPassword.vue
+│   │   │   │   ├── 📄 Login.vue
+│   │   │   │   ├── 📄 Register.vue
+│   │   │   │   ├── 📄 ResetPassword.vue
+│   │   │   │   └── 📄 VerifyEmail.vue
+│   │   │   ├── 📁 Profile/
+│   │   │   │   ├── 📁 Partials/
+│   │   │   │   │   ├── 📄 DeleteUserForm.vue
+│   │   │   │   │   ├── 📄 UpdatePasswordForm.vue
+│   │   │   │   │   └── 📄 UpdateProfileInformationForm.vue
+│   │   │   │   └── 📄 Edit.vue
+│   │   │   ├── 📄 Dashboard.vue
+│   │   │   └── 📄 KanbanBoard.vue
+│   │   ├── 📁 types/
+│   │   │   ├── 📄 auth.ts
+│   │   │   ├── 📄 global.d.ts
+│   │   │   ├── 📄 index.d.ts
+│   │   │   ├── 📄 index.ts
+│   │   │   ├── 📄 vite-env.d.ts
+│   │   │   └── 📄 vue-shims.d.ts
+│   │   ├── 📄 app.ts
+│   │   ├── 📄 bootstrap.ts
+│   │   └── 📄 ssr.ts
+│   └── 📁 views/
+│       └── 🐘 app.blade.php
+├── 📁 routes/
+│   ├── 🐘 auth.php
+│   ├── 🐘 console.php
+│   └── 🐘 web.php
+├── 📁 tests/
+│   ├── 📁 Feature/
+│   │   ├── 📁 Auth/
+│   │   │   ├── 🐘 AuthenticationTest.php
+│   │   │   ├── 🐘 EmailVerificationTest.php
+│   │   │   ├── 🐘 PasswordConfirmationTest.php
+│   │   │   ├── 🐘 PasswordResetTest.php
+│   │   │   ├── 🐘 PasswordUpdateTest.php
+│   │   │   └── 🐘 RegistrationTest.php
+│   │   ├── 🐘 ExampleTest.php
+│   │   └── 🐘 ProfileTest.php
+│   ├── 📁 Unit/
+│   │   └── 🐘 ExampleTest.php
+│   ├── 🐘 Pest.php
+│   └── 🐘 TestCase.php
+```
+
 ## 🦯 Local Development Setup Guide
 
 ### ✅ 1. Clone the repository
