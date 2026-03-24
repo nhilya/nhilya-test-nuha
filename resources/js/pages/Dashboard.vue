@@ -249,7 +249,7 @@ onMounted(() => {
                                     v-model="newTodo"
                                     type="text"
                                     placeholder="What needs to be done?"
-                                    class="flex-1 rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="flex-1 rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 pl-4"
                                     required
                                 >
                                 <button
